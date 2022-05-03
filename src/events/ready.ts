@@ -11,13 +11,22 @@ export default TypedEvent({
   once: true,
   run: async (client: Bot) => {
     client.logger.console.info(`Logged in as ${client.user?.tag}.`);
+    client.logger.console.info(`Ready to serve ${client.guilds.cache.size} guilds.`);
+    client.logger.console.info(`Loaded ${client.commands.size} commands.`);
+    client.logger.console.info(`Invite -> ${client.generateInvite({
+      permissions: ["ADMINISTRATOR"],
+      scopes: [
+        "applications.commands",
+        "bot",
+      ]
+    })}`)
 
     const commandArr: object[] = [];
 
     for await (const file of commandFiles) {
       const command = (await import(file)).default as IBotCommand;
       if (!command) {
-        console.error(
+        client.logger.console.error(
           `File at path ${file} seems to incorrectly be exporting a command.`
         );
         continue;

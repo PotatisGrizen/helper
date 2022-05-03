@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model configurations {
+  id        Int     @id @default(autoincrement())
+  discordId String  @unique(map: "discordId") @db.VarChar(20)
+  ownerId   String  @db.VarChar(20)
+  active    Boolean
+}

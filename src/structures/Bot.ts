@@ -21,7 +21,7 @@ export class Bot extends Client<true> {
     for await (const file of eventFiles) {
       const event = (await import(file)).default as IBotEvent<any>;
       if (!event) {
-        console.error(
+        this.logger.console.error(
           `File at path ${file} seems incorrectly be importing an event.`
         );
         continue;
