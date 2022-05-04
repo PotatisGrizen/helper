@@ -7,6 +7,8 @@ const config: IConfig = {
   logLevel: "debug",
 
   guildId: "784786918318931979",
+
+  mongoURI: process.env.MONGO_URI!,
 };
 
 export default config;

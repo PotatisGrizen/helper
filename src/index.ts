@@ -2,6 +2,11 @@ import { Intents } from "discord.js";
 import "dotenv/config";
 
 import { Bot } from "./structures/Bot";
+import { Database } from "./structures/Database";
+
+export const database = new Database();
+
+database.connect();
 
 export const bot = new Bot({
   intents: [
@@ -14,4 +19,4 @@ export const bot = new Bot({
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
 });
 
-bot.start();
+//bot.start();

@@ -36,3 +36,7 @@ export interface IBotEvent<T extends EventName> {
 }
 
 export const TypedEvent = <T extends EventName>(event: IBotEvent<T>) => event;
+
+export type MongooseOptions = {
+  mongoURI: string;
+}

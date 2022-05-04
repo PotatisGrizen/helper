@@ -3,6 +3,8 @@ export interface IConfig {
   logLevel: string;
 
   guildId: string;
+
+  mongoURI: string;
 }
 
 export interface Config {
@@ -10,4 +12,6 @@ export interface Config {
   logLevel: string;
 
   guildId: string;
+
+  mongoURI: string;
 }
