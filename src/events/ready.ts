@@ -11,15 +11,16 @@ export default TypedEvent({
   once: true,
   run: async (client: Bot) => {
     client.logger.console.info(`Logged in as ${client.user?.tag}.`);
-    client.logger.console.info(`Ready to serve ${client.guilds.cache.size} guilds.`);
+    client.logger.console.info(
+      `Ready to serve ${client.guilds.cache.size} guilds.`
+    );
     client.logger.console.info(`Loaded ${client.commands.size} commands.`);
-    client.logger.console.info(`Invite -> ${client.generateInvite({
-      permissions: ["ADMINISTRATOR"],
-      scopes: [
-        "applications.commands",
-        "bot",
-      ]
-    })}`)
+    client.logger.console.info(
+      `Invite -> ${client.generateInvite({
+        permissions: ["ADMINISTRATOR"],
+        scopes: ["applications.commands", "bot"],
+      })}`
+    );
 
     const commandArr: object[] = [];
 
@@ -34,16 +35,13 @@ export default TypedEvent({
 
       commandArr.push(command.data.toJSON());
       client.commands.set(command.data.name, command);
-      client.logger.console.debug(
-        `Registered command ${command.data.name}`
-      );
+      client.logger.console.debug(`Registered command ${command.data.name}`);
     }
 
-    const rest = new REST({ version: "9" }).setToken(config.token)
+    const rest = new REST({ version: "9" }).setToken(config.token);
 
-    rest.put(
-      Routes.applicationGuildCommands(client.user.id, config.guildId),
-      { body: commandArr }
-    )
+    rest.put(Routes.applicationGuildCommands(client.user.id, config.guildId), {
+      body: commandArr,
+    });
   },
 });

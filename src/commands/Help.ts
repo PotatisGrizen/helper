@@ -18,7 +18,7 @@ const command: IBotCommand = {
     fs.readdir("./dist/commands", (err, files) => {
       if (values[1] != null) {
         const embed = new MessageEmbed()
-          .setTitle('Command list!')
+          .setTitle("Command list!")
           .setColor("BLUE")
           .setTimestamp()
           .setDescription(`List of all commands`);
@@ -47,14 +47,14 @@ const command: IBotCommand = {
           .setTitle(`Command List!`)
           .setColor("BLUE")
           .setTimestamp()
-          .setDescription('List all commands');
+          .setDescription("List all commands");
         for (let i = 0; i < values.length; i++) {
           embed.addField(values[i], values[(i = i + 1)], true);
         }
-        return interaction.reply({ embeds: [embed], ephemeral: true })
+        return interaction.reply({ embeds: [embed], ephemeral: true });
       }
     });
-  }
-}
+  },
+};
 
 export default command;
