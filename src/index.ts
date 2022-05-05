@@ -4,10 +4,6 @@ import "dotenv/config";
 import { Bot } from "./structures/Bot";
 import { Database } from "./structures/Database";
 
-export const database = new Database();
-
-database.connect();
-
 export const bot = new Bot({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -19,4 +15,8 @@ export const bot = new Bot({
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
 });
 
-//bot.start();
+export const database = new Database(bot);
+
+database.connect();
+
+bot.start();

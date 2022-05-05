@@ -2,6 +2,7 @@ import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/rest/v9";
 
 import { config_ as config } from "../configs/config-handler";
+import configurationSchema from "../db/schemas/configuration.schema";
 import { commandFiles } from "../files";
 import { Bot } from "../structures/Bot";
 import { IBotCommand, TypedEvent } from "../types/types";
@@ -14,7 +15,6 @@ export default TypedEvent({
     client.logger.console.info(
       `Ready to serve ${client.guilds.cache.size} guilds.`
     );
-    client.logger.console.info(`Loaded ${client.commands.size} commands.`);
     client.logger.console.info(
       `Invite -> ${client.generateInvite({
         permissions: ["ADMINISTRATOR"],
