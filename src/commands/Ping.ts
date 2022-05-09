@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
 
 import { IBotCommand } from "../types/types";
-import { timeout } from "../utils";
+import { timeout } from "../utils/utils";
 
 const command: IBotCommand = {
   name: "Ping",

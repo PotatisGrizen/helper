@@ -113,6 +113,8 @@ export const defaultGuildConfig = {
     ],
     answeredCategoryName: "---  Tickets (Answered) ---",
     unansweredCategoryName: "---  Tickets (Unanswered) ---",
+    answeredCategoryId: "",
+    unansweredCategoryId: "",
   },
   flags: {
     partner: false,

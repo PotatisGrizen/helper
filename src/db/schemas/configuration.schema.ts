@@ -105,6 +105,8 @@ const schema = new Schema({
     subject: Array<subject>(),
     answeredCategoryName: String,
     unansweredCategoryName: String,
+    answeredCategoryId: String,
+    unansweredCategoryId: String,
   },
   flags: {
     partner: Boolean,

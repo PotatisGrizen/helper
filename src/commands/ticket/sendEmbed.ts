@@ -6,7 +6,8 @@ import { panelLang } from "../../lang/defaultLang";
 import { Bot } from "../../structures/Bot";
 import { panel } from "../../types/guildConfigTypes";
 import { IBotCommand } from "../../types/types";
-import { timeout } from "../../utils";
+import { panelEmbedBuilder } from "../../utils/embedBuilder";
+import { timeout } from "../../utils/utils";
 
 const command: IBotCommand = {
   name: "Send Embed",
@@ -23,10 +24,15 @@ const command: IBotCommand = {
 
     interaction.deferReply({ ephemeral: true})
 
-    const embed = new MessageEmbed()
-      .setTitle(embedData.title || panelLang.title)
-      .setDescription(embedData.content || panelLang.description)
-      .setFooter({text: embedData.footer || panelLang.footer, iconURL: embedData.footerIcon || panelLang.footerIcon || null});
+
+    console.log(embedData);
+
+    const builtEmbed = panelEmbedBuilder({
+      ...embedData
+    })
+
+    const embed = new MessageEmbed(builtEmbed)
+      
 
     const componentData = new MessageActionRow();
 
